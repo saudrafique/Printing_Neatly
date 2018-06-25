@@ -63,19 +63,15 @@ public class GFG
         {
             for (int j = i; j <= n; j++)
             {
-             
-                if (extras[i, j] < 0)
-                    linecost[i, j] = MAX;
-                else if (j == n &&
-                            extras[i, j] >= 0)
-                    linecost[i, j] = 0;
+                if (extras[i,j] < 0)
+                    linecost[i,j] = MAX;
+                else if (j == n && extras[i,j] == 0)
+                    linecost[i,j] = 0;
                 else
-                    linecost[i, j] = extras[i, j]
-                                * extras[i, j];
-               
+                    linecost[i,j] = extras[i,j] * extras[i,j] * extras[i,j];
             }
-          
         }
+
         Console.Write("\n");
         Console.WriteLine("\n----------------------------------------------------------");
         Console.Write("\nBelow matrix show the square of the cost of empty spaces left after the words placed in a line:\n");
@@ -113,7 +109,7 @@ public class GFG
     public static void Main()
     {
         //str is the passed string needs to be justified.
-        string[] str = { "It", "was", "the", "best", "of","times" };
+        string[] str = { "aaa", "bb", "cc", "dddd" };
         
         int[,] cost = new int[str.Length, str.Length];
         int[] strlength = new int[str.Length];
@@ -138,7 +134,7 @@ public class GFG
             
         }
         Console.WriteLine("\n----------------------------------------------------------");
-        int Maxlimit = 10;
+        int Maxlimit = 6;
         PrintingNeatly(strlength, strlength.Length, Maxlimit,str);
     }
 }
