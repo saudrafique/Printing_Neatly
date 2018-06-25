@@ -9,10 +9,12 @@ The problem is to minimize the following total cost.
  Cost of a line = (Number of extra spaces in the line)^3
  Total Cost = Sum of costs for all lines
 
-For example, consider the following string and line width M = 15
- "Geeks for Geeks presents word wrap problem" 
+For example, consider the following string and line width M = 10
+ "aaa bb cc ddddd" 
      
 Following is the optimized arrangement of words in 3 lines
-Geeks for Geeks
-presents word
-wrap problem 
+aaa
+bb cc
+ddddd
+
+We have optimize dynamic programming approach to solve this problem.
