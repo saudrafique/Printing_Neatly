@@ -1,4 +1,4 @@
-﻿
+
 using System;
 
 public class GFG
@@ -22,18 +22,18 @@ public class GFG
         return k;
     }
 
-    static void solveWordWrap(int[] l, int n,
+    static void PrintingNeatly(int[] l, int n,
                                         int M,string[] s)
     {
 
-
+        //extras 2d array will hold value for the number of empty spaces of words from i to j are put in a single line.
         int[,] extras = new int[n + 1, n + 1];
-
+       //linecost will have cost of a line which has words from i to j
         int[,] linecost = new int[n + 1, n + 1];
 
-
+        //c will have total cost of optimal arrangement of words
         int[] c = new int[n + 1];
-
+        //p is for printing the solution
         int[] p = new int[n + 1];
 
 
@@ -43,14 +43,27 @@ public class GFG
 
             for (int j = i + 1; j <= n; j++)
                 extras[i, j] = extras[i, j - 1]
-                                - l[j - 1] - 1;
+                                - l[j - 1]-1;
+
         }
+        Console.WriteLine("\n----------------------------------------------------------");
+        Console.Write("\nBelow matrix show the of the cost of empty spaces left after the words placed in a line \n");
+      
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= n; j++)
+            {
+                Console.Write(extras[i, j] + "\t");
 
-
+            }
+            Console.Write("\n");
+        }
+        Console.WriteLine("\n----------------------------------------------------------");
         for (int i = 1; i <= n; i++)
         {
             for (int j = i; j <= n; j++)
             {
+             
                 if (extras[i, j] < 0)
                     linecost[i, j] = MAX;
                 else if (j == n &&
@@ -59,9 +72,23 @@ public class GFG
                 else
                     linecost[i, j] = extras[i, j]
                                 * extras[i, j];
+               
             }
+          
         }
-
+        Console.Write("\n");
+        Console.WriteLine("\n----------------------------------------------------------");
+        Console.Write("\nBelow matrix show the square of the cost of empty spaces left after the words placed in a line:\n");
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= n; j++)
+            {
+                Console.Write(linecost[i, j] + "\t");
+            
+            }
+            Console.Write("\n");
+        }
+        Console.WriteLine("\n----------------------------------------------------------");
 
         c[0] = 0;
         for (int j = 1; j <= n; j++)
@@ -85,22 +112,33 @@ public class GFG
 
     public static void Main()
     {
-
-        string[] str = { "saud", "talha", "likes", "to", "code" };
+        //str is the passed string needs to be justified.
+        string[] str = { "It", "was", "the", "best", "of","times" };
+        
         int[,] cost = new int[str.Length, str.Length];
-        int[] o = new int[str.Length];
+        int[] strlength = new int[str.Length];
+        //Calculating the length of each word in the array
+        Console.WriteLine("This is the passed string:");
+            for (int j = 0; j < str.Length; j++)
+            {
+               
+                Console.Write(str[j] + " ");
 
+            }
+        Console.WriteLine("\n----------------------------------------------------------");
+        Console.WriteLine("This is the length of string:");
         for (int i = 0; i < 1; i++)
         {
             for (int j = 0; j < str.Length; j++)
             {
-                o[j] = str[j].Length;
-                Console.Write(o[j] + " ");
-            }
-        }
+                strlength[j] = str[j].Length;
+                Console.Write(strlength[j] + " ");
 
-        int n = o.Length;
-        int M = 12;
-        solveWordWrap(o, n, M,str);
+            }
+            
+        }
+        Console.WriteLine("\n----------------------------------------------------------");
+        int Maxlimit = 10;
+        PrintingNeatly(strlength, strlength.Length, Maxlimit,str);
     }
 }
