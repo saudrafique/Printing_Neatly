@@ -74,7 +74,7 @@ public class GFG
 
         Console.Write("\n");
         Console.WriteLine("\n----------------------------------------------------------");
-        Console.Write("\nBelow matrix show the square of the cost of empty spaces left after the words placed in a line:\n");
+        Console.Write("\nBelow matrix show the cube of the cost of empty spaces left after the words placed in a line:\n");
         for (int i = 1; i <= n; i++)
         {
             for (int j = 1; j <= n; j++)
